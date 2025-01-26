@@ -1,0 +1,15 @@
+.user_card-container {
+  width: 100%;
+  display: flex;
+  border: 1px solid red;
+  margin-bottom: 1rem;
+}
+
+.user_card-avatar {
+  width: 6rem;
+  aspect-ratio: 1/1;
+}
+
+.user_card-info {
+}
+
