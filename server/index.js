@@ -1,8 +1,18 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const { faker } = require("@faker-js/faker");
+const OpenAI = require("openai");
 
 console.log(process.pid);
+
+console.log(process.env.DEEPSEEK_API_KEY);
+
+const openai = new OpenAI({
+  baseURL: "https://chat.deepseek.com/",
+  apiKey: process.env.DEEPSEEK_API_KEY || "",
+});
 
 const PORT = 8000;
 
@@ -44,6 +54,23 @@ app.get("/infinit-scrolling", (req, res) => {
       pages: Math.ceil(dataCount / limit),
     },
   });
+});
+
+// this is not working needs an api key, can't get it coz of their site under mantainance.
+app.get("/open-ai", async (req, res) => {
+  const { q } = req.query;
+  try {
+    await openai.chat.completions.create({
+      message: [{ role: "system", content: q }],
+      model: "deepseek-chat",
+    });
+
+    res.json({ q });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+    });
+  }
 });
 
 app.listen(8000, () => {
