@@ -1,7 +1,7 @@
 import React from "react";
 
 export type InfinitScrollProps<T> = {
-  renderItem: React.FC<{ row: T }>;
+  renderItem: JSX.Element;
   getDate: (page: number) => Promise<{
     data: T[];
     meta: {

@@ -8,7 +8,7 @@ const PORT = 8000;
 
 const app = express();
 
-const dataCount = 3e4;
+const dataCount = 3e2;
 
 app.use(cors());
 
@@ -16,14 +16,14 @@ app.get("/infinit-scrolling", (req, res) => {
   let { page, limit } = req.query;
 
   page = Number(page);
-  limit = limit ? Number(limit) : 100;
+  limit = limit ? Number(limit) : 2;
 
   const offset = limit * (page - 1);
 
   const users = [];
 
   if (offset < dataCount) {
-    for (let i = 0; i < 1e9; i++) {}
+    // for (let i = 0; i < 1e9; i++) {}
 
     for (let i = offset; i < offset + limit; i++) {
       users.push({
