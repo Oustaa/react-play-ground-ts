@@ -1,6 +1,8 @@
 import axios from "axios";
 import InfiniteScroll from "./components/InfiniteScroll/Index";
 import UsersCard from "./components/Dommy/UserCard";
+import BadForm from "./components/form-test/bad-form";
+import GoodForm from "./components/form-test/good-form";
 
 async function getUserData(page: number) {
   try {
@@ -24,9 +26,11 @@ async function getUserData(page: number) {
 const App = () => {
   return (
     <>
-      <InfiniteScroll renderItem={UsersCard} getDate={getUserData} />
+      {/* <BadForm /> */}
+      <GoodForm />
+      {/* <InfiniteScroll renderItem={UsersCard} getDate={getUserData} /> */}
 
-      <div>
+      {/* <div>
         <div
           onClick={() => {
             console.log("DIV WAS CLICKED");
@@ -41,7 +45,7 @@ const App = () => {
             click me please
           </button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
