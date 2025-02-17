@@ -53,7 +53,7 @@ const InfinitScroll = <T,>({ getDate, renderItem }: InfinitScrollProps<T>) => {
 
   return (
     <div>
-      {data.map((elem, index) => {
+      {data.map((elem: any, index) => {
         // const renderedItem = renderItem({ row: elem });
         // lastElemenetrenderedRef.current = renderedItem;
         return (
